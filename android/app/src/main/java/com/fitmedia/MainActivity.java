@@ -1,4 +1,4 @@
-package com.socialapp;
+package com.fitmedia;
 
 import com.facebook.react.ReactActivity;
 

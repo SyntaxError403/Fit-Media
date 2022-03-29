@@ -66,7 +66,9 @@ const PostCard = ({item, onDelete, onPress}) => {
   }, []);
 
   return (
-    <Card key={item.id}>
+    <Card key={item.id}
+    style={{width: 600, height: 550}}
+    >
       <UserInfo>
         <UserImg
           source={{

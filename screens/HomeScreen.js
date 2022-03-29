@@ -235,7 +235,7 @@ const HomeScreen = ({navigation}) => {
                 style={{marginTop: 6, width: 250, height: 20, borderRadius: 4}}
               />
               <View
-                style={{marginTop: 6, width: 350, height: 200, borderRadius: 4}}
+                style={{marginTop: 6, width: 350, height: 400, borderRadius: 4}}
               />
             </View>
           </SkeletonPlaceholder>

@@ -19,12 +19,12 @@ const Tab = createBottomTabNavigator();
 const FeedStack = ({navigation}) => (
   <Stack.Navigator>
     <Stack.Screen
-      name="RN Social"
+      name="FitMedia"
       component={HomeScreen}
       options={{
         headerTitleAlign: 'center',
         headerTitleStyle: {
-          color: '#2e64e5',
+          color: '#e3090c',
           fontFamily: 'Kufam-SemiBoldItalic',
           fontSize: 18,
         },
