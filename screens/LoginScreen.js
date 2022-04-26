@@ -12,6 +12,7 @@ import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
 import {AuthContext} from '../navigation/AuthProvider';
+import { windowWidth } from '../utils/Dimentions';
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState();
@@ -22,10 +23,10 @@ const LoginScreen = ({navigation}) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Image
-        source={require('../assets/rn-social-logo.png')}
+        source={require('../assets/dumbbell.png')}
         style={styles.logo}
       />
-      <Text style={styles.text}>RN Social App</Text>
+      <Text style={styles.text}>Fit Media</Text>
 
       <FormInput
         labelValue={email}
@@ -45,7 +46,7 @@ const LoginScreen = ({navigation}) => {
         secureTextEntry={true}
       />
 
-      <FormButton
+      <FormButton  
         buttonTitle="Sign In"
         onPress={() => login(email, password)}
       />
@@ -94,6 +95,10 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingTop: 50
   },
+  button: {
+    width: windowWidth * .3
+    
+  },
   logo: {
     height: 150,
     width: 150,
@@ -103,7 +108,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Kufam-SemiBoldItalic',
     fontSize: 28,
     marginBottom: 10,
-    color: '#051d5f',
+    color: '#e3090c',
   },
   navButton: {
     marginTop: 15,

@@ -12,6 +12,9 @@ import ProfileScreen from '../screens/ProfileScreen';
 import AddPostScreen from '../screens/AddPostScreen';
 import MessagesScreen from '../screens/MessagesScreen';
 import EditProfileScreen from '../screens/EditProfileScreen';
+import DiscoverScreen from '../screens/discover';
+import SurveyScreen from '../screens/UserSurvery';
+
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -19,7 +22,7 @@ const Tab = createBottomTabNavigator();
 const FeedStack = ({navigation}) => (
   <Stack.Navigator>
     <Stack.Screen
-      name="FitMedia"
+      name="Fit Media"
       component={HomeScreen}
       options={{
         headerTitleAlign: 'center',
@@ -38,13 +41,14 @@ const FeedStack = ({navigation}) => (
               name="plus"
               size={22}
               backgroundColor="#fff"
-              color="#2e64e5"
+              color="#e3090c"
               onPress={() => navigation.navigate('AddPost')}
             />
           </View>
         ),
       }}
     />
+
     <Stack.Screen
       name="AddPost"
       component={AddPostScreen}
@@ -86,6 +90,17 @@ const FeedStack = ({navigation}) => (
   </Stack.Navigator>
 );
 
+const DiscoverStack = ({navigation}) => (
+
+  <Stack.Navigator>
+    <Stack.Screen
+    name ='Discover'
+    component ={DiscoverScreen}
+    />
+  </Stack.Navigator>
+
+);
+
 const MessageStack = ({navigation}) => (
   <Stack.Navigator>
     <Stack.Screen name="Messages" component={MessagesScreen} />
@@ -123,6 +138,22 @@ const ProfileStack = ({navigation}) => (
         },
       }}
     />
+
+<Stack.Screen
+      name="Survey"
+      component={SurveyScreen}
+      options={{
+        headerTitle: 'Survey',
+        headerBackTitleVisible: false,
+        headerTitleAlign: 'center',
+        headerStyle: {
+          backgroundColor: '#fff',
+          shadowColor: '#fff',
+          elevation: 0,
+        },
+      }}
+    /> 
+
   </Stack.Navigator>
 );
 
@@ -141,7 +172,7 @@ const AppStack = () => {
   return (
     <Tab.Navigator
       tabBarOptions={{
-        activeTintColor: '#2e64e5',
+        activeTintColor: '#e3090c',
       }}>
       <Tab.Screen
         name="Home"
@@ -152,6 +183,21 @@ const AppStack = () => {
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons
               name="home-outline"
+              color={color}
+              size={size}
+            />
+          ),
+        })}
+      />
+       <Tab.Screen
+        name="Disover"
+        component={DiscoverStack}
+        options={({route}) => ({
+          tabBarLabel: 'Discover',
+          // tabBarVisible: route.state && route.state.index === 0,
+          tabBarIcon: ({color, size}) => (
+            <MaterialCommunityIcons
+              name="magnify"
               color={color}
               size={size}
             />

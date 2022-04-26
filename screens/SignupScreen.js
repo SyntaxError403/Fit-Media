@@ -10,7 +10,7 @@ const SignupScreen = ({navigation}) => {
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
 
-  const {register} = useContext(AuthContext);
+  const {register, googleLogin} = useContext(AuthContext);
 
   return (
     <View style={styles.container}>
@@ -77,7 +77,7 @@ const SignupScreen = ({navigation}) => {
             btnType="google"
             color="#de4d41"
             backgroundColor="#f5e7ea"
-            onPress={() => {}}
+            onPress={() => googleLogin()}
           />
         </View>
       ) : null}

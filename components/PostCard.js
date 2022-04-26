@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Dimensions, Pressable } from 'react-native';
 
 import {
   Container,
@@ -25,12 +26,23 @@ import moment from 'moment';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import firestore from '@react-native-firebase/firestore';
 
+const windowWidth = Dimensions.get('window').width;
+
+const windowHeight = Dimensions.get('window').height;
+
+
+
 const PostCard = ({item, onDelete, onPress}) => {
   const {user, logout} = useContext(AuthContext);
   const [userData, setUserData] = useState(null);
-
+  const [liked, setLiked ] = useState(false)
+  const onPressed = () =>  likeIconColor = '#e3090c'
   likeIcon = item.liked ? 'heart' : 'heart-outline';
-  likeIconColor = item.liked ? '#2e64e5' : '#333';
+  likeIconColor = item.liked ? '#e3090c' : '#333';
+
+
+  const increment = firestore.FieldValue.increment(1);
+  const reduce = firestore.FieldValue.increment(-1);
 
   if (item.likes == 1) {
     likeText = '1 Like';
@@ -65,9 +77,65 @@ const PostCard = ({item, onDelete, onPress}) => {
     getUser();
   }, []);
 
+
+  const likePost = (postId) => {
+    if (checkLiked(postId) == false){
+
+    item.likes = item.likes + 1
+    firestore()
+          .collection('posts')
+          .doc(postId)
+          .update({yarn install
+           likes: increment,
+           likedBy: firestore.FieldValue.arrayUnion(user.uid)
+          })
+          .then(() => {
+              getUser()
+          })
+    }
+
+      unlike(postId);
+  }
+
+  const unlike = (postId) =>{
+
+    item.likes = item.likes - 1
+    firestore()
+          .collection('posts')
+          .doc(postId)
+          .update({
+           likes: reduce,
+           likedBy: firestore.FieldValue.arrayRemove(user.uid)
+          })
+          .then(() => {
+              getUser()
+          })
+  }
+
+  const checkLiked = (postId) => {
+    firestore()
+          .collection('posts')
+          .doc(postId)
+          .get()
+          .then(documentSnapshot => documentSnapshot.get('likedBy'))
+          .then(likedArray => {
+
+            console.log('Liked By', likedArray);
+            likedArray.filter( id => {
+
+              if (user.uid == id) {
+                console.log('I LIKED THIS');
+                  setLiked(true);
+              }
+              setLiked(false);
+            })
+          })
+  }
+
+
   return (
     <Card key={item.id}
-    style={{width: 600, height: 550}}
+    style={{width: windowWidth * .9, height: windowHeight * .525}}
     >
       <UserInfo>
         <UserImg
@@ -102,9 +170,26 @@ const PostCard = ({item, onDelete, onPress}) => {
       )}
 
       <InteractionWrapper>
-        <Interaction active={item.liked}>
+
+      <Pressable
+        onPress={() => {
+          item.liked = true
+          likeIcon = 'heart'
+          likeIconColor = '#e3090c'
+
+          likePost(item.id, item.liked)
+
+        }} >
+        {({ pressed }) => (
           <Ionicons name={likeIcon} size={25} color={likeIconColor} />
-          <InteractionText active={item.liked}>{likeText}</InteractionText>
+     
+        )}
+      </Pressable>
+
+
+
+        <Interaction onPress={() =>  onPressed}>
+        <InteractionText >{likeText}</InteractionText>
         </Interaction>
         <Interaction>
           <Ionicons name="md-chatbubble-outline" size={25} />

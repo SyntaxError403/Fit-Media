@@ -35,6 +35,7 @@ const AddPostScreen = () => {
 
   const takePhotoFromCamera = () => {
     ImagePicker.openCamera({
+      mediaType: 'any',
       width: 1200,
       height: 780,
       cropping: true,
@@ -45,11 +46,19 @@ const AddPostScreen = () => {
     });
   };
 
+const selectVideo = async () => {
+
+  ImagePicker.launchImageLibrary({ mediaType: 'video', includeBase64: true }, (response) => {
+      console.log(response);
+      this.setState({ video: response });
+  })
+}
+
   const choosePhotoFromLibrary = () => {
     ImagePicker.openPicker({
+      mediaType: 'any',
       width: 1200,
       height: 780,
-      cropping: true,
     }).then((image) => {
       console.log(image);
       const imageUri = Platform.OS === 'ios' ? image.sourceURL : image.path;

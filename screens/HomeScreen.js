@@ -7,6 +7,8 @@ import {
   FlatList,
   SafeAreaView,
   Alert,
+  Dimensions,
+  RefreshControl
 } from 'react-native';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
@@ -18,6 +20,15 @@ import storage from '@react-native-firebase/storage';
 import firestore from '@react-native-firebase/firestore';
 
 import {Container} from '../styles/FeedStyles';
+
+
+import changeNavigationBarColor, {
+  hideNavigationBar,
+  showNavigationBar,
+} from 'react-native-navigation-bar-color';
+import { color } from 'react-native-reanimated';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+
 
 const Posts = [
   {
@@ -81,8 +92,20 @@ const Posts = [
     comments: '0',
   },
 ];
+const wait = (timeout) => {
+  return new Promise(resolve => setTimeout(resolve, timeout));
+}
 
 const HomeScreen = ({navigation}) => {
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    wait(2000).then(() => 
+    fetchPosts(),
+    setRefreshing(false));
+  }, []);
+
   const [posts, setPosts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [deleted, setDeleted] = useState(false);
@@ -163,6 +186,7 @@ const HomeScreen = ({navigation}) => {
     );
   };
 
+
   const deletePost = (postId) => {
     console.log('Current Post Id: ', postId);
 
@@ -195,6 +219,7 @@ const HomeScreen = ({navigation}) => {
       });
   };
 
+
   const deleteFirestoreData = (postId) => {
     firestore()
       .collection('posts')
@@ -218,7 +243,14 @@ const HomeScreen = ({navigation}) => {
       {loading ? (
         <ScrollView
           style={{flex: 1}}
-          contentContainerStyle={{alignItems: 'center'}}>
+          contentContainerStyle={{alignItems: 'center'}}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+            />
+            }
+          >
           <SkeletonPlaceholder>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <View style={{width: 60, height: 60, borderRadius: 50}} />
@@ -263,14 +295,16 @@ const HomeScreen = ({navigation}) => {
       ) : (
         <Container>
           <FlatList
+          refreshing= {refreshing}
+          onRefresh={onRefresh}
             data={posts}
             renderItem={({item}) => (
               <PostCard
                 item={item}
                 onDelete={handleDelete}
-                onPress={() =>
-                  navigation.navigate('HomeProfile', {userId: item.userId})
-                }
+              //  onPress={
+                //  navigation.navigate('HomeProfile', {userId: item.userId})
+              //  }
               />
             )}
             keyExtractor={(item) => item.id}

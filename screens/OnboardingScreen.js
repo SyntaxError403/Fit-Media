@@ -58,20 +58,20 @@ const OnboardingScreen = ({navigation}) => {
         onDone={() => navigation.navigate("Login")}
         pages={[
           {
-            backgroundColor: '#a6e4d0',
-            image: <Image source={require('../assets/onboarding-img1.png')} />,
+            backgroundColor: '#ffffff',
+            image: <Image source={require('../assets/fitness.png')}  style={styles.tinyLogo} />,
             title: 'Connect to the World',
             subtitle: 'A New Way To Connect With The World',
           },
           {
-            backgroundColor: '#fdeb93',
-            image: <Image source={require('../assets/onboarding-img2.png')} />,
-            title: 'Share Your Favorites',
+            backgroundColor: '#ffffff',
+            image: <Image source={require('../assets/fitness.png')}  style={styles.tinyLogo} />,
+            title: 'Share Your Workouts',
             subtitle: 'Share Your Thoughts With Similar Kind of People',
           },
           {
-            backgroundColor: '#e9bcbe',
-            image: <Image source={require('../assets/onboarding-img3.png')} />,
+            backgroundColor: '#ffffff',
+            image: <Image source={require('../assets/fitness.png')}  style={styles.tinyLogo} />,
             title: 'Become The Star',
             subtitle: "Let The Spot Light Capture You",
           },
@@ -87,5 +87,9 @@ const styles = StyleSheet.create({
     flex: 1, 
     alignItems: 'center', 
     justifyContent: 'center'
+  },
+  tinyLogo: {
+    width: 150,
+    height: 150,
   },
 });

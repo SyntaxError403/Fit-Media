@@ -32,7 +32,7 @@ const ProfileScreen = ({navigation, route}) => {
         .orderBy('postTime', 'desc')
         .get()
         .then((querySnapshot) => {
-          // console.log('Total Posts: ', querySnapshot.size);
+        console.log('Total Posts: ', querySnapshot.size);
 
           querySnapshot.forEach((doc) => {
             const {
@@ -122,7 +122,7 @@ const ProfileScreen = ({navigation, route}) => {
               <TouchableOpacity
                 style={styles.userBtn}
                 onPress={() => {
-                  navigation.navigate('EditProfile');
+                  navigation.navigate('Survey');
                 }}>
                 <Text style={styles.userBtnTxt}>Edit</Text>
               </TouchableOpacity>
