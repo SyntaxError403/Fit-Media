@@ -14,6 +14,7 @@ import MessagesScreen from '../screens/MessagesScreen';
 import EditProfileScreen from '../screens/EditProfileScreen';
 import DiscoverScreen from '../screens/discover';
 import SurveyScreen from '../screens/UserSurvery';
+import PostTemplates from '../screens/PostTypeScreen';
 
 
 const Stack = createStackNavigator();
@@ -42,7 +43,7 @@ const FeedStack = ({navigation}) => (
               size={22}
               backgroundColor="#fff"
               color="#e3090c"
-              onPress={() => navigation.navigate('AddPost')}
+              onPress={() => navigation.navigate('PostTemplates')}
             />
           </View>
         ),
@@ -68,8 +69,30 @@ const FeedStack = ({navigation}) => (
         ),
       }}
     />
+
+<Stack.Screen
+      name="PostTemplates"
+      component={PostTemplates}
+      options={{
+        title: '',
+        headerTitleAlign: 'center',
+        headerStyle: {
+          backgroundColor: '#fff',
+          shadowColor: '#fff',
+          elevation: 0,
+        },
+        headerBackTitleVisible: false,
+        headerBackImage: () => (
+          <View style={{marginLeft: 15}}>
+            <Ionicons name="arrow-back" size={25} color="#2e64e5" />
+          </View>
+        ),
+      }}
+    />
+
+
     <Stack.Screen
-      name="HomeProfile"
+      name="Profile"
       component={ProfileScreen}
       options={{
         title: '',
@@ -100,6 +123,8 @@ const DiscoverStack = ({navigation}) => (
   </Stack.Navigator>
 
 );
+
+
 
 const MessageStack = ({navigation}) => (
   <Stack.Navigator>

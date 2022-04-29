@@ -35,7 +35,7 @@ const windowHeight = Dimensions.get('window').height;
 const PostCard = ({item, onDelete, onPress}) => {
   const {user, logout} = useContext(AuthContext);
   const [userData, setUserData] = useState(null);
-  const [liked, setLiked ] = useState(false)
+  const [liked, setLiked ] = useState()
   const onPressed = () =>  likeIconColor = '#e3090c'
   likeIcon = item.liked ? 'heart' : 'heart-outline';
   likeIconColor = item.liked ? '#e3090c' : '#333';
@@ -75,31 +75,36 @@ const PostCard = ({item, onDelete, onPress}) => {
 
   useEffect(() => {
     getUser();
-  }, []);
+  }, [liked]);
 
 
   const likePost = (postId) => {
-    if (checkLiked(postId) == false){
-
+    checkLiked(postId)
+    if (liked == false || liked == undefined){
     item.likes = item.likes + 1
     firestore()
           .collection('posts')
           .doc(postId)
-          .update({yarn install
+          .update({
            likes: increment,
            likedBy: firestore.FieldValue.arrayUnion(user.uid)
           })
           .then(() => {
               getUser()
-          })
+              setLiked(true)
+            })
     }
-
-      unlike(postId);
+    console.log('New state', liked)
+    if (liked == true) { 
+      console.log('Unlike')
+     unlike(postId);
+    }
   }
 
   const unlike = (postId) =>{
 
     item.likes = item.likes - 1
+    item.liked =
     firestore()
           .collection('posts')
           .doc(postId)
@@ -109,6 +114,7 @@ const PostCard = ({item, onDelete, onPress}) => {
           })
           .then(() => {
               getUser()
+              setLiked(false);
           })
   }
 
@@ -119,16 +125,23 @@ const PostCard = ({item, onDelete, onPress}) => {
           .get()
           .then(documentSnapshot => documentSnapshot.get('likedBy'))
           .then(likedArray => {
-
+            
             console.log('Liked By', likedArray);
+
+            if (likedArray == null || likedArray == undefined)
+            {
+              console.log('NOBODY HAS LIKED THIS');
+              setLiked(false)
+            }
+
             likedArray.filter( id => {
 
               if (user.uid == id) {
                 console.log('I LIKED THIS');
-                  setLiked(true);
+                setLiked(true)
               }
-              setLiked(false);
             })
+            console.log(liked)
           })
   }
 
