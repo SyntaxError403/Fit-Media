@@ -240,7 +240,7 @@ const HomeScreen = ({navigation}) => {
               <PostCard
                 item={item}
                 onDelete={handleDelete}
-              onPress={
+                onPress={
                 navigation.navigate('HomeProfile', {userId: item.userId})
               }
               />
