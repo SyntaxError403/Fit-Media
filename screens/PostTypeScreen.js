@@ -108,22 +108,29 @@ const PostTemplates = ({navigation}) => {
     </Pressable>
     )
   },
-
-  {
-    icon: (
+{
+  icon: (
+    <Pressable
+    onPress={() => {
+     navigation.navigate("AddPost")
+    }}>
+    {({ pressed }) => (
       <View>
-      <Image
-        style={{ width: windowWidth * .5, height: 150 , resizeMode: 'stretch'}}
-        source={require('../assets/diet.png')}
-      />
-     <Text style={{
-            fontSize: 18,
+          <Image
+          style={{ width: windowWidth * .5, height: 150 , resizeMode: 'stretch'}}
+          source={require('../assets/diet.png')}
+          />
+          <Text style={{
+            fontSize: 20,
             color: '#1a4f76',
             marginTop: 10,
             marginLeft: 5,
-      }}>Diets / Meal Prepping</Text>
-      </View>
-    )
+
+          }}>Diets / Meal Prepping</Text>
+        </View>
+      )}
+  </Pressable>
+  )
   },
 ];
 

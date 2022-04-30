@@ -34,84 +34,80 @@ const Routine = ({navigation}) => {
 
   return (
 
-    <View>
+    <View style={styles.container}>
       <Text style={styles.title}>Upload a Workout Routine</Text>
       <Text style={styles.description} > Click on a day to add information. </Text>
-    <View style={{flexDirection: 'row'}}>
-     <Button 
+  <View style={{marginLeft: 30, marginTop: 25, width: 150}}>
+    <Button 
       onPress= {() => {navigation.navigate("Article")}}
       title = "Monday"
       style={styles.btn}
      />
     </View>
+    <View style={{marginLeft: 30, marginTop: 25, width: 150}}>
+     <Button 
+      onPress= {() => {navigation.navigate("Article")}}
+      title = "Tuesday"
+      style={styles.btn}
+     />
+    </View>
 
-
-    <View style={{flexDirection: 'row'}}>
-      <Interaction onPress={() => Popup()}> 
-        <SubmitBtn style={styles.btn}>
-                <SubmitBtnText>Tuesday</SubmitBtnText>
-        </SubmitBtn>
-        </Interaction>   
-  </View>
-
-
-    <View style={{flexDirection: 'row'}}>
-      <Interaction onPress={() => Popup()}> 
-        <SubmitBtn style={styles.btn}>
-                <SubmitBtnText>Wednesday</SubmitBtnText>
-        </SubmitBtn>
-        </Interaction>
+    <View style={{marginLeft: 30, marginTop: 25, width: 150}}>
+     <Button 
+      onPress= {() => {navigation.navigate("Article")}}
+      title = "Wednesday"
+      style={styles.btn}
+     />
     </View>
 
 
-    <View style={{flexDirection: 'row'}}>
-      <Interaction onPress={() => Popup()}> 
-        <SubmitBtn style={styles.btn}>
-                <SubmitBtnText>Thursday</SubmitBtnText>
-        </SubmitBtn>
-      </Interaction>    
+    <View style={{marginLeft: 30, marginTop: 25, width: 150}}>
+     <Button 
+      onPress= {() => {navigation.navigate("Article")}}
+      title = "Thursday"
+      style={styles.btn}
+     />
     </View>
 
 
-    <View style={{flexDirection: 'row'}}>
-      <Interaction onPress={() => Popup()}> 
-        <SubmitBtn style={styles.btn}>
-                <SubmitBtnText>Friday</SubmitBtnText>
-        </SubmitBtn>
-    </Interaction>
+    <View style={{marginLeft: 30, marginTop: 25, width: 150}}>
+     <Button 
+      onPress= {() => {navigation.navigate("Article")}}
+      title = "Friday"
+      style={styles.btn}
+     />
     </View>
 
-    <View style={{flexDirection: 'row'}}>
-      <Interaction onPress={() => Popup()}> 
-        <SubmitBtn style={styles.btn}>
-                <SubmitBtnText>Saturday</SubmitBtnText>
-        </SubmitBtn>
-        </Interaction>   
-  </View>
+    <View style={{marginLeft: 30, marginTop: 25, width: 150}}>
+     <Button 
+      onPress= {() => {navigation.navigate("Article")}}
+      title = "Saturday"
+      style={styles.btn}
+     />
+    </View>
 
 
-    <View style={{flexDirection: 'row'}}>
-      <Interaction onPress={() => Popup()}> 
-        <SubmitBtn style={styles.btn}>
-                <SubmitBtnText>Sunday</SubmitBtnText>
-        </SubmitBtn>
-        </Interaction>   
-      </View>
-  </View>
+    <View style={{marginLeft: 30, marginTop: 25, width: 150}}>
+     <Button 
+      onPress= {() => {navigation.navigate("Article")}}
+      title = "Sunday   "
+      style={styles.btn}
+     />
+    </View>
+    </View>
   );
 };
 
 const styles = {
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'column'
   },
 
   btn: {
-    width: '80%',
-    marginLeft: 15,
-    marginTop: 15,
+    textAlign: 'center',
+    marginLeft: 75,
+    marginTop: 30,
     marginBottom: 10
   },
 
@@ -128,7 +124,7 @@ const styles = {
   },
 
   description:{
-    fontSize: 20,
+    fontSize: 25,
     color: '#1a4f76',
     textAlign: 'center',
   },

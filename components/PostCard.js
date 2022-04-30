@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { Dimensions, Pressable, Modal, View, Alert } from 'react-native';
+import { Dimensions, Pressable, Modal, View, Alert, Text } from 'react-native';
 
 import {
   Container,
@@ -192,24 +192,28 @@ const PostCard = ({item, onDelete, onPress}) => {
 
       <Pressable
         onPress={() => {
+        
+        }} >
+        {({ pressed }) => (
+          <View style={{flexDirection: 'row'}}>
+          <Interaction onPress={() =>  {
           item.liked = true
           likeIcon = 'heart'
           likeIconColor = '#e3090c'
 
           likePost(item.id, item.liked)
-
-        }} >
-        {({ pressed }) => (
-          <Ionicons name={likeIcon} size={25} color={likeIconColor} />
-     
+            }
+          }>
+         <Ionicons name={likeIcon} size={25} color={likeIconColor} />
+         <InteractionText>{likeText}</InteractionText>
+       </Interaction>
+         </View>
         )}
       </Pressable>
 
 
 
-        <Interaction onPress={() =>  onPressed}>
-        <InteractionText >{likeText}</InteractionText>
-        </Interaction>
+       
         <Interaction onPress={() => 
         
         <Modal
@@ -220,7 +224,10 @@ const PostCard = ({item, onDelete, onPress}) => {
             Alert.alert("Modal has been closed.");
             this.setModalVisible(!modalVisible);
           }}
-        ></Modal>
+        >
+           <Text>Upload a Workout Routine</Text>
+
+        </Modal>
         
         }>
           <Ionicons name="md-chatbubble-outline" size={25} />

@@ -147,7 +147,7 @@ export const AddPostScreen = () => {
 
   return (
     <View style={styles.container}>
-      <InputWrapper>
+    <InputWrapper style={{backgroundColor: 'white'}}>
         {image != null ? <AddImage source={{uri: image}} /> : null}
 
         <InputField
@@ -193,6 +193,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'white'
   },
   actionButtonIcon: {
     fontSize: 20,

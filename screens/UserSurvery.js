@@ -11,6 +11,7 @@ import {
 
 import FormInput from '../components/FormInput';
 import {Picker} from '@react-native-picker/picker';
+import DateField from 'react-native-datefield';
 
 
 const SurveyScreen = () => {

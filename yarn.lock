@@ -1194,6 +1194,11 @@
   "resolved" "https://registry.npmjs.org/@react-native-firebase/storage/-/storage-10.3.1.tgz"
   "version" "10.3.1"
 
+"@react-native-google-signin/google-signin@^7.2.2":
+  "integrity" "sha512-FqSJAEYz+SNeIOyokFX3e7nbBgK0js/Hye0YNY+cV0Qf1NxKw1vRt2MQB3kfuVWFCb+OSovgQCl6W8dhYvsblw=="
+  "resolved" "https://registry.npmjs.org/@react-native-google-signin/google-signin/-/google-signin-7.2.2.tgz"
+  "version" "7.2.2"
+
 "@react-native-picker/picker@^2.4.0":
   "integrity" "sha512-duGZc3a8Qa21YPrA4U3oR9NAUzBA66FTjubGK2CodA6rNjiwN+xC32hOZ5unkf4qD3DqLWeoPjg3fYf54bVMjA=="
   "resolved" "https://registry.npmjs.org/@react-native-picker/picker/-/picker-2.4.0.tgz"
@@ -5971,6 +5976,14 @@
     "shell-quote" "^1.6.1"
     "ws" "^7"
 
+"react-dom@>= 16.8.0":
+  "integrity" "sha512-fU1Txz7Budmvamp7bshe4Zi32d0ll7ect+ccxNu9FlObT605GOEB8BfO4tmRJ39R5Zj831VCpvQ05QPBW5yb+w=="
+  "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.1.0.tgz"
+  "version" "18.1.0"
+  dependencies:
+    "loose-envify" "^1.1.0"
+    "scheduler" "^0.22.0"
+
 "react-is@^16.12.0", "react-is@^16.13.0", "react-is@^16.7.0", "react-is@^16.8.1", "react-is@^16.8.4", "react-is@^16.8.6", "react-is@>= 16.8.0":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -5994,6 +6007,11 @@
   "integrity" "sha1-eIO1ayCgAu63kMET+GFuqGksp5U="
   "resolved" "https://registry.npmjs.org/react-native-communications/-/react-native-communications-2.2.1.tgz"
   "version" "2.2.1"
+
+"react-native-datefield@^0.3.5":
+  "integrity" "sha512-bQ/HFKTjbF0sBcMxLSJcxixi1jsaKBQqVnxUSRLJG75DZZtKqoST5hjelTn8c+YHzmcLvZKttrvW4YT9rE5IQw=="
+  "resolved" "https://registry.npmjs.org/react-native-datefield/-/react-native-datefield-0.3.5.tgz"
+  "version" "0.3.5"
 
 "react-native-fbsdk@^2.0.0":
   "integrity" "sha512-CyPKoBVt9Y+KznALcnN4lkh6dUNqZjyFS6GbkXXTFf72wR9Dl8bXF2dDj56w/o5/TFoCnNCmQlZgh7P/NiElZQ=="
@@ -6200,7 +6218,7 @@
     "react-is" "^16.8.6"
     "scheduler" "^0.19.1"
 
-"react@*", "react@^16.0", "react@^16.13.1", "react@^16.8", "react@^16.8.0", "react@>= 16.8.0", "react@>=0.14.8", "react@>=16.3.0", "react@16 || 17", "react@16.13.1":
+"react@*", "react@^16.0", "react@^16.13.1", "react@^16.8", "react@^16.8.0", "react@^18.1.0", "react@>= 16.8.0", "react@>=0.14.8", "react@>=16.3.0", "react@16 || 17", "react@16.13.1":
   "integrity" "sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.13.1.tgz"
   "version" "16.13.1"
@@ -6580,6 +6598,13 @@
   dependencies:
     "loose-envify" "^1.1.0"
     "object-assign" "^4.1.1"
+
+"scheduler@^0.22.0":
+  "integrity" "sha512-6QAm1BgQI88NPYymgGQLCZgvep4FyePDWFpXVK+zNSUgHwlqpJy8VEh8Et0KxTACS4VWwMousBElAZOH9nkkoQ=="
+  "resolved" "https://registry.npmjs.org/scheduler/-/scheduler-0.22.0.tgz"
+  "version" "0.22.0"
+  dependencies:
+    "loose-envify" "^1.1.0"
 
 "semver@^5.1.0":
   "integrity" "sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ=="
