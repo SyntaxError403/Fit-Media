@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { Dimensions, Pressable } from 'react-native';
+import { Dimensions, Pressable, Modal, View, Alert } from 'react-native';
 
 import {
   Container,
@@ -40,6 +40,13 @@ const PostCard = ({item, onDelete, onPress}) => {
   likeIcon = item.liked ? 'heart' : 'heart-outline';
   likeIconColor = item.liked ? '#e3090c' : '#333';
 
+  const state = {
+    modalVisible: false
+  };
+
+  const setModalVisible = (visible) => {
+    this.setState({ modalVisible: visible });
+  }
 
   const increment = firestore.FieldValue.increment(1);
   const reduce = firestore.FieldValue.increment(-1);
@@ -145,7 +152,6 @@ const PostCard = ({item, onDelete, onPress}) => {
           })
   }
 
-
   return (
     <Card key={item.id}
     style={{width: windowWidth * .9, height: windowHeight * .525}}
@@ -204,7 +210,19 @@ const PostCard = ({item, onDelete, onPress}) => {
         <Interaction onPress={() =>  onPressed}>
         <InteractionText >{likeText}</InteractionText>
         </Interaction>
-        <Interaction>
+        <Interaction onPress={() => 
+        
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={true}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            this.setModalVisible(!modalVisible);
+          }}
+        ></Modal>
+        
+        }>
           <Ionicons name="md-chatbubble-outline" size={25} />
           <InteractionText>{commentText}</InteractionText>
         </Interaction>
@@ -215,7 +233,7 @@ const PostCard = ({item, onDelete, onPress}) => {
         ) : null}
       </InteractionWrapper>
     </Card>
-  );
+    );
 };
 
 export default PostCard;

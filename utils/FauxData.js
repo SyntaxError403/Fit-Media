@@ -1,7 +1,8 @@
 import React from "react";
 import { Image } from "react-native";
-import {Dimensions, View, Text} from "react-native";
-
+import {Dimensions, View, Text, Pressable} from "react-native";
+import { color } from "react-native-reanimated";
+import {PostTemplates, Callback} from "../screens/PostTypeScreen";
 const windowWidth = Dimensions.get('window').width;
 
 const windowHeight = Dimensions.get('window').height;
@@ -309,59 +310,7 @@ export const itemData = [
       },
 ];
 
-export const postTemplatesData = [
-  {
-    icon: (
-      <View>
-      <Image
-        style={{ width: windowWidth * .5, height: 150 , resizeMode: 'stretch'}}
-        source={{
-          uri:
-            "https://www.gympros.com/wp-content/uploads/2019/02/bigstock-Gym-Equipment-Room-4332199.jpg"
-        }}
-      />
-      <Text>Posts</Text>
-      </View>
-    )
-  },
-
-  {
-    icon: (
-      <Image
-        style={{ width: windowWidth * .5, height: 175 , resizeMode: 'stretch'}}
-        source={{
-          uri:
-          "https://www.gympros.com/wp-content/uploads/2019/02/bigstock-Gym-Equipment-Room-4332199.jpg"
-        }}
-      />
-    )
-  },
-
-  {
-    icon: (
-      <Image
-        style={{ width: windowWidth * .45, height: 175 , resizeMode: 'stretch'}}
-        source={{
-          uri:
-          "https://www.gympros.com/wp-content/uploads/2019/02/bigstock-Gym-Equipment-Room-4332199.jpg"
-        }}
-      />
-    )
-  },
-
-  {
-    icon: (
-      <Image
-        style={{ width: windowWidth * .45, height: 175 , resizeMode: 'stretch'}}
-        source={{
-          uri:
-          "https://www.gympros.com/wp-content/uploads/2019/02/bigstock-Gym-Equipment-Room-4332199.jpg"
-        }}
-      />
-    )
-  },
-
-];
+export
 
 const Posts = [
   {
@@ -425,3 +374,12 @@ const Posts = [
     comments: '0',
   },
 ];
+
+export const styles = {
+
+  text: {
+    fontSize: 20,
+    color: '#1a4f76'
+  },
+
+};

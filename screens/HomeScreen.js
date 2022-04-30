@@ -240,9 +240,9 @@ const HomeScreen = ({navigation}) => {
               <PostCard
                 item={item}
                 onDelete={handleDelete}
-              //  onPress={
-                //  navigation.navigate('HomeProfile', {userId: item.userId})
-              //  }
+              onPress={
+                navigation.navigate('HomeProfile', {userId: item.userId})
+              }
               />
             )}
             keyExtractor={(item) => item.id}

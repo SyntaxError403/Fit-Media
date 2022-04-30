@@ -12,10 +12,11 @@ import ProfileScreen from '../screens/ProfileScreen';
 import AddPostScreen from '../screens/AddPostScreen';
 import MessagesScreen from '../screens/MessagesScreen';
 import EditProfileScreen from '../screens/EditProfileScreen';
-import DiscoverScreen from '../screens/discover';
+import DiscoverScreen from '../screens/DiscoverScreen';
 import SurveyScreen from '../screens/UserSurvery';
 import PostTemplates from '../screens/PostTypeScreen';
-
+import Routine from '../screens/RoutineScreen'
+import ArticlePost from '../screens/ArticleScreen'
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -90,6 +91,46 @@ const FeedStack = ({navigation}) => (
       }}
     />
 
+
+<Stack.Screen
+      name="Routine"
+      component={Routine}
+      options={{
+        title: '',
+        headerTitleAlign: 'center',
+        headerStyle: {
+          backgroundColor: '#fff',
+          shadowColor: '#fff',
+          elevation: 0,
+        },
+        headerBackTitleVisible: false,
+        headerBackImage: () => (
+          <View style={{marginLeft: 15}}>
+            <Ionicons name="arrow-back" size={25} color="#2e64e5" />
+          </View>
+        ),
+      }}
+    />
+
+<Stack.Screen
+      name="Article"
+      component={ArticlePost}
+      options={{
+        title: '',
+        headerTitleAlign: 'center',
+        headerStyle: {
+          backgroundColor: '#fff',
+          shadowColor: '#fff',
+          elevation: 0,
+        },
+        headerBackTitleVisible: false,
+        headerBackImage: () => (
+          <View style={{marginLeft: 15}}>
+            <Ionicons name="arrow-back" size={25} color="#2e64e5" />
+          </View>
+        ),
+      }}
+    />
 
     <Stack.Screen
       name="Profile"

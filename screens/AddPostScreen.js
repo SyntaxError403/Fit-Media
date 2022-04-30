@@ -25,7 +25,7 @@ import {
 
 import { AuthContext } from '../navigation/AuthProvider';
 
-const AddPostScreen = () => {
+export const AddPostScreen = () => {
   const {user, logout} = useContext(AuthContext);
 
   const [image, setImage] = useState(null);
@@ -46,7 +46,7 @@ const AddPostScreen = () => {
     });
   };
 
-const selectVideo = async () => {
+ const selectVideo = async () => {
 
   ImagePicker.launchImageLibrary({ mediaType: 'video', includeBase64: true }, (response) => {
       console.log(response);
@@ -66,7 +66,7 @@ const selectVideo = async () => {
     });
   };
 
-  const submitPost = async () => {
+   const submitPost = async () => {
     const imageUrl = await uploadImage();
     console.log('Image Url: ', imageUrl);
     console.log('Post: ', post);
