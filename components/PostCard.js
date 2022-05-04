@@ -17,6 +17,7 @@ import {
   InteractionText,
   Divider,
 } from '../styles/FeedStyles';
+import { useNavigation } from '@react-navigation/native';
 
 import ProgressiveImage from './ProgressiveImage';
 
@@ -31,8 +32,8 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 
-
 const PostCard = ({item, onDelete, onPress}) => {
+  const navigation = useNavigation(); 
   const {user, logout} = useContext(AuthContext);
   const [userData, setUserData] = useState(null);
   const [liked, setLiked ] = useState()
@@ -192,8 +193,9 @@ const PostCard = ({item, onDelete, onPress}) => {
 
       <Pressable
         onPress={() => {
-        
-        }} >
+         
+        }} 
+        >
         {({ pressed }) => (
           <View style={{flexDirection: 'row'}}>
           <Interaction onPress={() =>  {
@@ -215,20 +217,7 @@ const PostCard = ({item, onDelete, onPress}) => {
 
        
         <Interaction onPress={() => 
-        
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={true}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-            this.setModalVisible(!modalVisible);
-          }}
-        >
-           <Text>Upload a Workout Routine</Text>
-
-        </Modal>
-        
+           navigation.navigate("Comments")
         }>
           <Ionicons name="md-chatbubble-outline" size={25} />
           <InteractionText>{commentText}</InteractionText>

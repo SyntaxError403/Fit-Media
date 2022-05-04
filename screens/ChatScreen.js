@@ -3,9 +3,14 @@ import {View, ScrollView, Text, Button, StyleSheet} from 'react-native';
 import {Bubble, GiftedChat, Send} from 'react-native-gifted-chat';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import firestore from '@react-native-firebase/firestore';
+import { AuthContext } from '../navigation/AuthProvider';
+
+
 
 const ChatScreen = () => {
   const [messages, setMessages] = useState([]);
+
 
   useEffect(() => {
     setMessages([
@@ -35,6 +40,13 @@ const ChatScreen = () => {
   const onSend = useCallback((messages = []) => {
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, messages),
+      
+      firestore()
+        .collection('chats')
+        .doc('message')
+        .update({
+          messagesdata: messages,
+        })
     );
   }, []);
 

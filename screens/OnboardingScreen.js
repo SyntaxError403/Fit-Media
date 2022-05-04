@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
 import Onboarding from 'react-native-onboarding-swiper';
+import { color } from 'react-native-reanimated';
 
 const Dots = ({selected}) => {
     let backgroundColor;
@@ -59,20 +60,23 @@ const OnboardingScreen = ({navigation}) => {
         pages={[
           {
             backgroundColor: '#ffffff',
-            image: <Image source={require('../assets/fitness.png')}  style={styles.tinyLogo} />,
-            title: 'Connect to the World',
+            image: <Image source={require('../assets/dumbbell.png')}  style={styles.tinyLogo} />,
+            title: 'FitMedia',
+            titleStyles: { color: 'red' }, 
             subtitle: 'A New Way To Connect With The World',
           },
           {
             backgroundColor: '#ffffff',
-            image: <Image source={require('../assets/fitness.png')}  style={styles.tinyLogo} />,
+            image: <Image source={require('../assets/muscle.png')}  style={styles.tinyLogo} />,
             title: 'Share Your Workouts',
+            titleStyles: { color: 'red' }, 
             subtitle: 'Share Your Thoughts With Similar Kind of People',
           },
           {
             backgroundColor: '#ffffff',
             image: <Image source={require('../assets/fitness.png')}  style={styles.tinyLogo} />,
             title: 'Become The Star',
+            titleStyles: { color: 'red' }, 
             subtitle: "Let The Spot Light Capture You",
           },
         ]}
