@@ -15,8 +15,9 @@ import EditProfileScreen from '../screens/EditProfileScreen';
 import DiscoverScreen from '../screens/DiscoverScreen';
 import SurveyScreen from '../screens/UserSurvery';
 import PostTemplates from '../screens/PostTypeScreen';
-import Routine from '../screens/RoutineScreen'
-import ArticlePost from '../screens/ArticleScreen'
+import Routine from '../screens/RoutineScreen';
+import WorkoutPost from '../screens/Workout';
+import CommentFeed from '../screens/CommentScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -72,6 +73,27 @@ const FeedStack = ({navigation}) => (
     />
 
 <Stack.Screen
+      name="Comments"
+      component={CommentFeed}
+      options={{
+        title: '',
+        headerTitleAlign: 'center',
+        headerStyle: {
+          backgroundColor: '#2e64e515',
+          shadowColor: '#2e64e515',
+          elevation: 0,
+        },
+        headerBackTitleVisible: false,
+        headerBackImage: () => (
+          <View style={{marginLeft: 15}}>
+            <Ionicons name="arrow-back" size={25} color="#2e64e5" />
+          </View>
+        ),
+      }}
+    />
+
+
+<Stack.Screen
       name="PostTemplates"
       component={PostTemplates}
       options={{
@@ -113,8 +135,8 @@ const FeedStack = ({navigation}) => (
     />
 
 <Stack.Screen
-      name="Article"
-      component={ArticlePost}
+      name="Workouts"
+      component={WorkoutPost}
       options={{
         title: '',
         headerTitleAlign: 'center',

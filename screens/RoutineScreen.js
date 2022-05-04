@@ -37,59 +37,69 @@ const Routine = ({navigation}) => {
     <View style={styles.container}>
       <Text style={styles.title}>Upload a Workout Routine</Text>
       <Text style={styles.description} > Click on a day to add information. </Text>
-  <View style={{marginLeft: 30, marginTop: 25, width: 150}}>
+
+      <InputField style={styles.input}
+          placeholder="Routine Title"
+        />
+
+  <View style={{marginLeft: 30, marginTop: 5, width: 150}}>
     <Button 
-      onPress= {() => {navigation.navigate("Article")}}
+      onPress= {() => {navigation.navigate("Workouts")}}
       title = "Monday"
       style={styles.btn}
      />
     </View>
+    <Divider/>
     <View style={{marginLeft: 30, marginTop: 25, width: 150}}>
      <Button 
-      onPress= {() => {navigation.navigate("Article")}}
+      onPress= {() => {navigation.navigate("Workouts")}}
       title = "Tuesday"
       style={styles.btn}
      />
     </View>
+    <Divider/>
 
     <View style={{marginLeft: 30, marginTop: 25, width: 150}}>
      <Button 
-      onPress= {() => {navigation.navigate("Article")}}
+      onPress= {() => {navigation.navigate("Workouts")}}
       title = "Wednesday"
       style={styles.btn}
      />
     </View>
-
+    <Divider/>
 
     <View style={{marginLeft: 30, marginTop: 25, width: 150}}>
      <Button 
-      onPress= {() => {navigation.navigate("Article")}}
+      onPress= {() => {navigation.navigate("Workouts")}}
       title = "Thursday"
       style={styles.btn}
      />
     </View>
 
+    <Divider/>
 
     <View style={{marginLeft: 30, marginTop: 25, width: 150}}>
      <Button 
-      onPress= {() => {navigation.navigate("Article")}}
+      onPress= {() => {navigation.navigate("Workouts")}}
       title = "Friday"
       style={styles.btn}
      />
     </View>
+    <Divider/>
 
     <View style={{marginLeft: 30, marginTop: 25, width: 150}}>
      <Button 
-      onPress= {() => {navigation.navigate("Article")}}
+      onPress= {() => {navigation.navigate("Workouts")}}
       title = "Saturday"
       style={styles.btn}
      />
     </View>
+    <Divider/>
 
 
     <View style={{marginLeft: 30, marginTop: 25, width: 150}}>
      <Button 
-      onPress= {() => {navigation.navigate("Article")}}
+      onPress= {() => {navigation.navigate("Workouts")}}
       title = "Sunday   "
       style={styles.btn}
      />
@@ -103,6 +113,15 @@ const styles = {
     flex: 1,
     flexDirection: 'column'
   },
+
+  input: {
+    marginTop: 15,
+    backgroundColor: "#fff",
+    marginLeft: 15,
+    height: 50,
+    fontSize: 20,
+    textAlign: 'left'
+},
 
   btn: {
     textAlign: 'center',

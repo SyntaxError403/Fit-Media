@@ -27,7 +27,7 @@ import firestore from '@react-native-firebase/firestore';
 
 
 
-const ArticlePost = ({navigation}) => {
+const WorkoutPost = ({navigation}) => {
     const [image, setImage] = useState(null);
     const [uploading, setUploading] = useState(false);
     const [transferred, setTransferred] = useState(0);
@@ -151,18 +151,16 @@ const ArticlePost = ({navigation}) => {
     return (
 
     <View style={styles.container}>
-    <Text style={styles.title}>Upload a Workout Routine</Text>
+    <Text style={styles.title}>Upload a Workout</Text>
 
     <InputField style={styles.input}
-          placeholder="Routine Title"
+          placeholder="Workout Title"
           multiline
           numberOfLines={4}
         />
      
     <InputField style={styles.inputTwo}
-          placeholder="Routine Description and Details:             
-                                 
-          (Click the + to add workout media or page)" 
+          placeholder="Workout  Description and Details:          (Click the + to add workout media or page)" 
           multiline
           numberOfLines={4}
           value={post}
@@ -235,4 +233,4 @@ const styles = {
     }
 };
 
-export default ArticlePost;
+export default WorkoutPost;
