@@ -13,6 +13,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 
 import storage from '@react-native-firebase/storage';
 import firestore from '@react-native-firebase/firestore';
+import Video from 'react-native-video';
 
 import {
   InputField,
@@ -46,13 +47,6 @@ export const AddPostScreen = () => {
     });
   };
 
- const selectVideo = async () => {
-
-  ImagePicker.launchImageLibrary({ mediaType: 'video', includeBase64: true }, (response) => {
-      console.log(response);
-      this.setState({ video: response });
-  })
-}
 
   const choosePhotoFromLibrary = () => {
     ImagePicker.openPicker({
@@ -60,7 +54,6 @@ export const AddPostScreen = () => {
       width: 1200,
       height: 780,
     }).then((image) => {
-      console.log(image);
       const imageUri = Platform.OS === 'ios' ? image.sourceURL : image.path;
       setImage(imageUri);
     });
@@ -80,6 +73,7 @@ export const AddPostScreen = () => {
       postTime: firestore.Timestamp.fromDate(new Date()),
       likes: null,
       comments: null,
+      multiPage: true,
     })
     .then(() => {
       console.log('Post Added!');
@@ -149,7 +143,7 @@ export const AddPostScreen = () => {
     <View style={styles.container}>
     <InputWrapper style={{backgroundColor: 'white'}}>
         {image != null ? <AddImage source={{uri: image}} /> : null}
-
+      
         <InputField
           placeholder="What's on your mind?"
           multiline

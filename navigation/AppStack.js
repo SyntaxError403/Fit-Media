@@ -15,8 +15,8 @@ import EditProfileScreen from '../screens/EditProfileScreen';
 import DiscoverScreen from '../screens/DiscoverScreen';
 import SurveyScreen from '../screens/UserSurvery';
 import PostTemplates from '../screens/PostTypeScreen';
-import Routine from '../screens/RoutineScreen'
-import ArticlePost from '../screens/ArticleScreen'
+import Routine from '../screens/RoutineScreen';
+import WorkoutPost from '../screens/Workout';
 import CommentFeed from '../screens/CommentScreen';
 
 const Stack = createStackNavigator();
@@ -135,8 +135,8 @@ const FeedStack = ({navigation}) => (
     />
 
 <Stack.Screen
-      name="Article"
-      component={ArticlePost}
+      name="Workouts"
+      component={WorkoutPost}
       options={{
         title: '',
         headerTitleAlign: 'center',

@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { Dimensions, Pressable, Modal, View, Alert, Text } from 'react-native';
+import { Dimensions, Pressable, Modal, View, Alert, Text, StyleSheet} from 'react-native';
 
 import {
   Container,
@@ -17,6 +17,17 @@ import {
   InteractionText,
   Divider,
 } from '../styles/FeedStyles';
+
+
+import {
+  InputField,
+  InputWrapper,
+  AddImage,
+  SubmitBtn,
+  SubmitBtnText,
+  StatusWrapper,
+} from '../styles/AddPost';
+
 import { useNavigation } from '@react-navigation/native';
 
 import ProgressiveImage from './ProgressiveImage';
@@ -41,14 +52,7 @@ const PostCard = ({item, onDelete, onPress}) => {
   likeIcon = item.liked ? 'heart' : 'heart-outline';
   likeIconColor = item.liked ? '#e3090c' : '#333';
 
-  const state = {
-    modalVisible: false
-  };
-
-  const setModalVisible = (visible) => {
-    this.setState({ modalVisible: visible });
-  }
-
+ 
   const increment = firestore.FieldValue.increment(1);
   const reduce = firestore.FieldValue.increment(-1);
 
@@ -155,7 +159,7 @@ const PostCard = ({item, onDelete, onPress}) => {
 
   return (
     <Card key={item.id}
-    style={{width: windowWidth * .9, height: windowHeight * .525}}
+    style={[item.multiPage == true ? styles.expanded : styles.normal]}
     >
       <UserInfo>
         <UserImg
@@ -177,6 +181,20 @@ const PostCard = ({item, onDelete, onPress}) => {
         </UserInfoText>
       </UserInfo>
       <PostText>{item.post}</PostText>
+
+
+      {item.multiPage == true ? (
+      <SubmitBtn style={{
+        marginLeft: 10, 
+        width: 150, height: 45,
+        marginBottom: 10, elevation: 5,
+        borderRadius: 15, backgroundColor: 'white',
+        borderWidth: 2, borderColor: '#3399ff'}}>
+          <SubmitBtnText style={{fontSize: 14,}}> See Full Post</SubmitBtnText>
+      </SubmitBtn>
+      ) : null}
+
+
       {/* {item.postImg != null ? <PostImg source={{uri: item.postImg}} /> : <Divider />} */}
       {item.postImg != null ? (
         <ProgressiveImage
@@ -232,4 +250,19 @@ const PostCard = ({item, onDelete, onPress}) => {
     );
 };
 
+
+const styles = StyleSheet.create({
+  
+  normal: {
+    width: windowWidth * .9, 
+    height: windowHeight * .525
+  },
+
+  expanded: {
+    width: windowWidth * .9,
+     height: windowHeight * .5725
+  },
+
+
+});
 export default PostCard;

@@ -67,6 +67,7 @@ const HomeScreen = ({navigation}) => {
               postTime,
               likes,
               comments,
+              multiPage,
             } = doc.data();
             list.push({
               id: doc.id,
@@ -80,6 +81,7 @@ const HomeScreen = ({navigation}) => {
               liked: false,
               likes,
               comments,
+              multiPage,
             });
           });
         });
@@ -176,6 +178,7 @@ const HomeScreen = ({navigation}) => {
   const ListHeader = () => {
     return null;
   };
+
   return (
     <SafeAreaView style={{flex: 1}}>
       {loading ? (
@@ -240,8 +243,8 @@ const HomeScreen = ({navigation}) => {
               <PostCard
                 item={item}
                 onDelete={handleDelete}
-                onPress={
-                navigation.navigate('HomeProfile', {userId: item.userId})
+                onPress={ () =>
+                navigation.navigate('Profile', {userId: item.userId})
               }
               />
             )}

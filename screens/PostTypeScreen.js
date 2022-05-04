@@ -63,7 +63,7 @@ const PostTemplates = ({navigation}) => {
     icon: (
       <Pressable
       onPress={() => {
-       navigation.navigate("Routine")
+       navigation.navigate("Workouts")
       }}>
       {({ pressed }) => (
         <View>
